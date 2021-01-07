@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.view.screen;
 
 import java.util.Stack;
 import racingcar.view.screen.Screen;

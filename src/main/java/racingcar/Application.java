@@ -3,6 +3,7 @@ package racingcar;
 import java.util.Scanner;
 import racingcar.view.InputView;
 import racingcar.view.screen.MainScreen;
+import racingcar.view.screen.ScreenManager;
 
 public class Application {
 

@@ -3,6 +3,7 @@ package racingcar;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 import racingcar.view.screen.Screen;
+import racingcar.view.screen.ScreenManager;
 
 public class ErrorHandler {
   public static void goBackWhenException(InputView inputView) {
