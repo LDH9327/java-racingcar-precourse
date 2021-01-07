@@ -11,7 +11,7 @@ import racingcar.view.type.CategoryType;
 public class InputView {
 
     private static final String ENGLISH_KOREAN_NUMBER_REGULAR_EXPRESSION = "^[0-9가-힣a-zA-Z]*$";
-    private static final String NUMBER_REGULAR_EXPRESSION = "^[0-9]^$";
+    private static final String NUMBER_REGULAR_EXPRESSION = "^[0-9]*$";
     private static final String COMMA = ",";
     private static final int MIN_LENGTH_CAR_NAME = 1;
     private static final int MAX_LENGTH_CAR_NAME = 4;
@@ -50,7 +50,15 @@ public class InputView {
         return command;
     }
 
-    public List<String> readCarName() {
+    public String readCarName() {
+        String carName = readLine();
+        if (!isValidCarName(carName)) {
+            throw new InvalidCarNameException(carName);
+        }
+        return carName;
+    }
+
+    public List<String> readCarNames() {
         String carNames = readLine();
         List<String> carNameList = Arrays.asList(carNames.split(COMMA));
         carNameList.forEach(carName -> isValidCarName(carName));
@@ -60,7 +68,7 @@ public class InputView {
     private boolean isValidCarName(String carName) {
         if (carName.length() > MAX_LENGTH_CAR_NAME
             || carName.length() < MIN_LENGTH_CAR_NAME
-            || carName.matches(ENGLISH_KOREAN_NUMBER_REGULAR_EXPRESSION)) {
+            || !carName.matches(ENGLISH_KOREAN_NUMBER_REGULAR_EXPRESSION)) {
             throw new InvalidCarNameException(carName);
         }
         return true;
