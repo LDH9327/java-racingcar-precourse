@@ -1,11 +1,9 @@
 package racingcar.view.screen;
 
-import java.util.Arrays;
-import java.util.Objects;
-import racingcar.exception.InvalidCommandException;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 import racingcar.view.screen.action.CarAddScreen;
+import racingcar.view.screen.action.CarDeleteScreen;
 import racingcar.view.type.ActionType;
 import racingcar.view.type.CategoryType;
 
@@ -35,17 +33,5 @@ public class CarManagerScreen implements Screen {
         if(command.equals(ActionType.GOBACK.getCommand())) {
             ScreenManager.pop();
         }
-        ScreenManager.pop();
-    }
-
-    private String validateCommand(String command) {
-        boolean isCarManagerCommand = Arrays.stream(ActionType.values())
-                                            .anyMatch(
-                                                type -> Objects.equals(type.getCommand(),
-                                                    command));
-        if (!isCarManagerCommand) {
-            throw new InvalidCommandException(command);
-        }
-        return command;
     }
 }
