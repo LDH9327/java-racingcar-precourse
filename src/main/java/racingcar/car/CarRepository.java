@@ -39,4 +39,31 @@ public class CarRepository {
         return cars.stream()
                    .anyMatch(car -> Objects.equals(car.getName(), carName));
     }
+
+    private static int getMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            if (maxPosition < car.getPosition()) {
+                maxPosition = car.getPosition();
+            }
+        }
+        return maxPosition;
+    }
+
+    public static String getFinalWinnerName() {
+        int maxPosition = getMaxPosition();
+        String finalWinnerName = "";
+        for (Car car : cars) {
+            if (maxPosition == car.getPosition()) {
+                finalWinnerName = String.join(",", car.getName());
+            }
+        }
+        return finalWinnerName;
+    }
+
+    public static void clear() {
+        cars.clear();
+    }
+
+
 }
