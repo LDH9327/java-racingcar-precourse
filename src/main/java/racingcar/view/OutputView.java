@@ -10,7 +10,10 @@ public class OutputView {
     private static final String RESULT_PREFIX = "[INFO]";
     private static final String SPACE = " ";
     private static final String COMMA = ",";
-    private static final String CAR_RESULT_MESSAGE = "현재 등록된 자동차: '%s'";
+    private static final String HYPEN = "-";
+    private static final String COLON = ":";
+    private static final String CAR_RESULT_MESSAGE = "현재 등록된 자동차: %s";
+    private static final String RACE_RESULT_MESSAGE = "최종 우승자: %s";
 
     private OutputView() {
     }
@@ -49,5 +52,18 @@ public class OutputView {
 
     public static void printlnList(String command, String actionName) {
         println(String.join(SPACE, command, actionName));
+    }
+
+    public static void printlnRace(Car car) {
+        String positionToHypen = "";
+        for (int i = 0; i < car.getPosition(); i++) {
+            positionToHypen += HYPEN;
+        }
+        String resultMessage = String.join(SPACE, car.getName(), COLON, positionToHypen);
+        printlnResult(resultMessage);
+    }
+
+    public static void printlnRaceResult(String finalWinner) {
+        printlnResult(String.format(RACE_RESULT_MESSAGE,finalWinner));
     }
 }
