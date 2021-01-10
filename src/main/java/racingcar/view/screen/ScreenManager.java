@@ -5,7 +5,7 @@ import racingcar.view.screen.Screen;
 
 public class ScreenManager {
 
-    public static Stack<Screen> screenManager = new Stack<>();
+    private static Stack<Screen> screenManager = new Stack<>();
 
     public static boolean isEmpty() {
         if (screenManager.isEmpty()) {

@@ -2,6 +2,7 @@ package racingcar.view.screen;
 
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+import racingcar.view.screen.action.RaceScreen;
 import racingcar.view.type.CategoryType;
 
 public class MainScreen implements Screen {
@@ -26,7 +27,7 @@ public class MainScreen implements Screen {
       ScreenManager.push(new CarManagerScreen());
     }
     if(command.equals(CategoryType.RACE_START.getCommand())) {
-      ScreenManager.push(new RaceStartScreen());
+      ScreenManager.push(new RaceScreen());
     }
     if(command.equals(CategoryType.EXIT.getCommand())) {
       ScreenManager.clear();
