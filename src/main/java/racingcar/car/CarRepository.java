@@ -50,12 +50,12 @@ public class CarRepository {
         return maxPosition;
     }
 
-    public static String getFinalWinnerName() {
+    public static List<Car> getFinalWinnerName() {
         int maxPosition = getMaxPosition();
-        String finalWinnerName = "";
+        List<Car> finalWinnerName = new ArrayList<>();
         for (Car car : cars) {
             if (maxPosition == car.getPosition()) {
-                finalWinnerName = String.join(",", car.getName());
+                finalWinnerName.add(car);
             }
         }
         return finalWinnerName;
@@ -64,6 +64,4 @@ public class CarRepository {
     public static void clear() {
         cars.clear();
     }
-
-
 }

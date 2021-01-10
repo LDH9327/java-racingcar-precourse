@@ -11,6 +11,7 @@ public class RaceScreen implements Screen {
 
     private static final String TRY_COUNT_GUIDE_MESSAGE = "시도할 횟수를 입력하세요.";
     private static final String RACE_START_MESSAGE = "실행 결과";
+    private static final String RACE_RESULT_MESSAGE = "최종 우승자: %s";
 
 
     @Override
@@ -24,13 +25,13 @@ public class RaceScreen implements Screen {
         OutputView.printlnResult(RACE_START_MESSAGE);
         for (int i = 0; i < tryCount; i++) {
             OutputView.newLine();
-            for(Car car : CarRepository.cars()) {
+            for (Car car : CarRepository.cars()) {
                 car.raceOneTime();
                 OutputView.printlnRace(car);
             }
         }
         OutputView.newLine();
-        OutputView.printlnRaceResult(CarRepository.getFinalWinnerName());
+        OutputView.printlnCarListByName(RACE_RESULT_MESSAGE, CarRepository.getFinalWinnerName());
         CarRepository.clear();
         ScreenManager.pop();
     }

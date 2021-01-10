@@ -12,8 +12,6 @@ public class OutputView {
     private static final String COMMA = ",";
     private static final String HYPEN = "-";
     private static final String COLON = ":";
-    private static final String CAR_RESULT_MESSAGE = "현재 등록된 자동차: %s";
-    private static final String RACE_RESULT_MESSAGE = "최종 우승자: %s";
 
     private OutputView() {
     }
@@ -34,7 +32,7 @@ public class OutputView {
         println(String.join(SPACE, RESULT_PREFIX, resultMessage));
     }
 
-    public static void printlnCarListByName(List<Car> carList) {
+    public static void printlnCarListByName(String message,List<Car> carList) {
         String carNameList = "";
         for (Car car : carList) {
             if (carNameList.isEmpty()) {
@@ -43,7 +41,7 @@ public class OutputView {
             }
             carNameList = String.join(COMMA, carNameList, car.getName());
         }
-        printlnResult(String.format(CAR_RESULT_MESSAGE, carNameList));
+        printlnResult(String.format(message, carNameList));
     }
 
     public static void printlnGuide(String guideMessage) {
@@ -61,9 +59,5 @@ public class OutputView {
         }
         String resultMessage = String.join(SPACE, car.getName(), COLON, positionToHypen);
         printlnResult(resultMessage);
-    }
-
-    public static void printlnRaceResult(String finalWinner) {
-        printlnResult(String.format(RACE_RESULT_MESSAGE,finalWinner));
     }
 }
