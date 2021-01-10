@@ -1,5 +1,7 @@
 package racingcar.view.screen;
 
+import racingcar.car.CarRepository;
+import racingcar.exception.CannotDeleteCarException;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 import racingcar.view.screen.action.CarAddScreen;
@@ -28,6 +30,9 @@ public class CarManagerScreen implements Screen {
             ScreenManager.push(new CarAddScreen());
         }
         if(command.equals(ActionType.DELETE.getCommand())) {
+            if(CarRepository.cars().isEmpty()) {
+                throw new CannotDeleteCarException();
+            }
             ScreenManager.push(new CarDeleteScreen());
         }
         if(command.equals(ActionType.GOBACK.getCommand())) {
